@@ -1,6 +1,8 @@
-<img align="left" src="imgs/MLU_Logo.png">
+<img align="center" src="imgs/MLU_Logo.png">
 
 ---
+
+
 
 # MLU-MLOps Lab
 For lecture usage on the ML Operation (MLOps) course in Amazon Machine Learning University (MLU).
