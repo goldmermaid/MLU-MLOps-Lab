@@ -92,6 +92,21 @@ US East (N. Virginia) | [![Launch MLOps solution in us-east-1](imgs/cloudformati
 
 
 ----
+## Supplementary
+
+If you would like to use a customized environment (i.e. rather than Sagemaker built-in ones), you may create a customized Docker image on your own. In this case, you will need to create a `Dockerfile` with 
+
+- `pip install ...` selected packages;
+- training and inference code.
+
+Then, build the customized doker by running `!docker build -f Dockerfile -t ...`. 
+
+
+Please see [sample code](https://github.com/awslabs/amazon-sagemaker-mlops-workshop/blob/master/lab/01_CreateAlgorithmContainer/01_Creating%20a%20Classifier%20Container.ipynb) about how to create a customized Docker image.
+
+
+
+----
 # Cleaning
 
 First delete the folowing stacks:
