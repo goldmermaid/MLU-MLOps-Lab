@@ -8,14 +8,19 @@
 For lecture usage on the ML Operation (MLOps) course in Amazon Machine Learning University (MLU).
 
 ##### Table of Contents  
-- [Introduction](#Introduction)  
+- [MLU MLOps Introduction](#Introduction)  
 - [Pre-requisites](#Pre-requisites)  
+- [Lab Overview](#Lab-Overview)
+  - [The Pipeline Architecture](#The-Pipeline-Architecture)
+- [Lab Instructions](#Lab-Instructions)
+- [Supplementary](#Supplementary)
 
 
 
 
 <a name="Introduction"/>
-## Introduction
+
+## MLU MLOps Introduction
 
 In this course, we will first overview how to architect end-to-end ML systems: from initial ML project scoping to data ingestion, from model training and deployment, to model serving, monitoring and maintenance. Through the lectures, we will explore the ML Systems of several key products and services within Amazon to get you inspired with a varied of ML system decisions. Beside, by reviewing some ML pitfalls, we provide some practical solutions for you to debug the ML systems.
 
@@ -30,6 +35,7 @@ We structure the course as following:
 
 
 <a name="Pre-requisites"/>
+
 ## Pre-requisites
 
 ### Knowledge Check
@@ -52,6 +58,8 @@ Some experience working with the AWS console is helpful as well.
 
  You'll need an AWS Account with access to the services above. There are resources required by this workshop that are eligible for the [AWS Free Tier](https://aws.amazon.com/free/) if your account is less than 12 months old. 
 
+<a name="Lab-Overview"/>
+
 ## Lab Overview
 
 In this course, you'll implement and experiment a basic MLOps process, supported by an automated infrastructure for training/testing/deploying/integrating ML Models. It is comprised into four parts:
@@ -63,7 +71,9 @@ In this course, you'll implement and experiment a basic MLOps process, supported
 Parts 2 and 3 are supported by automated pipelines that reads the assets produced by the ML devoloper and execute/control the whole process.
 
 
-### Architecture
+<a name="The-Pipeline-Architecture"/>
+
+### The Pipeline Architecture
 
 You'll make use of the following structure for training the model, testing it, deploying it in two different environments: DEV - QA/Development (simple endpoint) and PRD - Production (HA/Elastic endpoint).
 
@@ -81,7 +91,9 @@ You'll make use of the following structure for training the model, testing it, d
 9. Done.
 
 
-## Instructions
+<a name="Lab-Instructions"/>
+
+## Lab Instructions
 
 First, you need to execute a CloudFormation script to create all the components required for the exercises.
 
@@ -99,6 +111,9 @@ US East (N. Virginia) | [![Launch MLOps solution in us-east-1](imgs/cloudformati
 
 
 ----
+
+<a name="Supplementary"/>
+
 ## Supplementary
 
 If you would like to use a customized environment (i.e. rather than Sagemaker built-in ones), you may create a customized Docker image on your own. In this case, you will need to create a `Dockerfile` with 
