@@ -7,7 +7,14 @@
 # MLU-MLOps Lab
 For lecture usage on the ML Operation (MLOps) course in Amazon Machine Learning University (MLU).
 
+##### Table of Contents  
+- [Introduction](#Introduction)  
+- [Pre-requisites](#Pre-requisites)  
 
+
+
+
+<a name="Introduction"/>
 ## Introduction
 
 In this course, we will first overview how to architect end-to-end ML systems: from initial ML project scoping to data ingestion, from model training and deployment, to model serving, monitoring and maintenance. Through the lectures, we will explore the ML Systems of several key products and services within Amazon to get you inspired with a varied of ML system decisions. Beside, by reviewing some ML pitfalls, we provide some practical solutions for you to debug the ML systems.
@@ -22,8 +29,8 @@ We structure the course as following:
 <img align="central" src="imgs/mlops_syllabus.png">
 
 
-
-## Pre-Requisites
+<a name="Pre-requisites"/>
+## Pre-requisites
 
 ### Knowledge Check
 
