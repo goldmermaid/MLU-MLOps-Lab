@@ -108,12 +108,24 @@ First, login to the AWS account and navigate to [S3 Buckets main page](https://s
   * you don’t need to change other settings but go ahead to “Create bucket”.
 
 
-Then, 
+Then, we will need to upload the CloudFormantion `.yaml` files into this bucket. We have a set of sample scripts for you - [`MLOps Labs.zip`](https://github.com/goldmermaid/MLU-MLOps-Lab/raw/main/MLOps%20Labs.zip). This `.zip` file includes all the CloudFormation `.yml` files and sub `.zip` files to automate the overall pipelines. Let's *download* and *unzip* the `MLOps Labs.zip`; Next, we *upload* the above `.yml` and `.zip` files to the S3 bucket you just created. After uploading the files, the S3 bucket looks like:
 
-1. *download* `MLOps Labs.zip (https://quip-amazon.com/-/blob/KQc9AAqsMUK/M983C8oVL8o0iorRgkIbOg?name=MLOps%20Labs.zip&s=DrrjAL7Fb9kj) (includes all the CloudFormation .yml and .zip files )  and *unzip it*;
-2. *upload* the above .yml and .zip files to the S3 bucket you just created:
+![](imgs/s3_upload.png)
 
-    * After *unzipped* and uploaded the files, the S3 bucket looks like:
+
+
+### Step 1. Create the CloudFormation Stack
+
+Now we have the "ingredients" for CloudFormation to use, we can then create our stack to orchestrate the ML Pipeline. 
+
+First, Go to CloudFormation (https://us-west-2.console.aws.amazon.com/cloudformation/home?region=us-west-2#) at Region *us-west-*2. Once you the mainpage, click `Create stack` and the options as below:
+
+![](img/create_stack.png)
+
+
+
+
+
 
 
 
