@@ -60,20 +60,8 @@ Some experience working with the AWS console is helpful as well.
 
 <a name="Lab-Overview"/>
 
-## Lab Overview
 
-In this course, you'll implement and experiment a basic MLOps process, supported by an automated infrastructure for training/testing/deploying/integrating ML Models. It is comprised into four parts:
-
-1. You'll start with a **WarmUp**, for reviewing the basic features of Amazon Sagemaker;
-2. After that, you will train the model (using the buil-in XGBoost or the a custom container if you ran the step 2), deploy them into a **DEV** environment, approve and deploy them into a **PRD** environment with **High Availability** and **Elasticity**;
-3. Finally, you'll run a Stress test on your production endpoint to test the elasticity and simulate a situation where the number of requests on your ML model can vary.
-
-Parts 2 and 3 are supported by automated pipelines that reads the assets produced by the ML devoloper and execute/control the whole process.
-
-
-<a name="The-Pipeline-Architecture"/>
-
-### The Pipeline Architecture
+## The ML Pipeline Architecture of this Lab
 
 You'll make use of the following structure for training the model, testing it, deploying it in two different environments: DEV - QA/Development (simple endpoint) and PRD - Production (HA/Elastic endpoint).
 
@@ -94,6 +82,44 @@ You'll make use of the following structure for training the model, testing it, d
 <a name="Lab-Instructions"/>
 
 ## Lab Instructions
+
+### Overview
+
+In this course, you'll implement and experiment a basic MLOps process, supported by an automated infrastructure for training/testing/deploying/integrating ML Models. It is comprised into four parts:
+
+1. You'll start with a **WarmUp**, for reviewing the basic features of Amazon Sagemaker;
+2. After that, you will train the model (using the buil-in XGBoost or the a custom container if you ran the step 2), deploy them into a **DEV** environment, approve and deploy them into a **PRD** environment with **High Availability** and **Elasticity**;
+3. Finally, you'll run a Stress test on your production endpoint to test the elasticity and simulate a situation where the number of requests on your ML model can vary.
+
+Parts 2 and 3 are supported by automated pipelines that reads the assets produced by the ML devoloper and execute/control the whole process.
+
+
+<a name="The-Pipeline-Architecture"/>
+
+
+### Step 0. Upload files to S3
+
+As we wish to build a repeatable, testable and auditable end-to-end pipelien, we will use CloudFormation, *an infrastructure automation platform for AWS*, to create all the components required for the exercises. CloudFormantion requires some templates (e.g. `.yaml` files) to launch a repeatable ML pipeline. Hence, we will need to upload the templates to a S3 bucket as showing below:
+
+First, login to the AWS account and navigate to [S3 Buckets main page](https://s3.console.aws.amazon.com/s3/home?region=us-west-2#), and create an S3 bucket (Create Bucket) as below:
+
+  * the bucket name is “mlops-launch-template-YOURALIAS” (Please replace YOURALIAS with your own alias, e.g., mlops-launch-template-rlhu as shown in the below image);
+  * the S3 bucket region will be *us-west-2*;
+  * you don’t need to change other settings but go ahead to “Create bucket”.
+
+
+Then, 
+
+1. *download* `MLOps Labs.zip (https://quip-amazon.com/-/blob/KQc9AAqsMUK/M983C8oVL8o0iorRgkIbOg?name=MLOps%20Labs.zip&s=DrrjAL7Fb9kj) (includes all the CloudFormation .yml and .zip files )  and *unzip it*;
+2. *upload* the above .yml and .zip files to the S3 bucket you just created:
+
+    * After *unzipped* and uploaded the files, the S3 bucket looks like:
+
+
+
+
+
+
 
 First, you need to execute a CloudFormation script to create all the components required for the exercises.
 
