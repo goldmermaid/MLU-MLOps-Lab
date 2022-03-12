@@ -118,7 +118,7 @@ Then, we will need to upload the CloudFormantion `.yaml` files into this bucket.
 
 Now we have the "ingredients" for CloudFormation to use, we can then create our stack to orchestrate the ML Pipeline. 
 
-First, Go to CloudFormation (https://us-west-2.console.aws.amazon.com/cloudformation/home?region=us-west-2#) at Region *us-west-*2. Once you the mainpage, click `Create stack` and the options as below:
+First, Go to [CloudFormation](https://us-west-2.console.aws.amazon.com/cloudformation/home?region=us-west-2#) at Region *us-west-2*. Once you the mainpage, click `Create stack` and the options as below:
 
 ![](img/create_stack.png)
 
