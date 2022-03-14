@@ -120,8 +120,14 @@ Now we have the "ingredients" for CloudFormation to use, we can then create our 
 
 First, Go to [CloudFormation](https://us-west-2.console.aws.amazon.com/cloudformation/home?region=us-west-2#) at Region *us-west-2*. Once you the mainpage, click `Create stack` and the options as below:
 
-![](img/create_stack.png)
+![](imgs/create_stack.png)
 
+
+Then, choose `Templates is ready` and `Amazon S3 URL`. To find the template's S3 URL, find the file named `MLU_MLOps_Labs_CF.yml`in the S3 bucket you have created above, and copy the *Object URL* as shown below:
+
+# TODO: NEED PUT THE .yml file IN THE .zip
+
+![](imgs/template_s3_url.png)
 
 
 
