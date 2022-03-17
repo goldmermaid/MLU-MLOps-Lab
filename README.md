@@ -83,8 +83,6 @@ You'll make use of the following structure for training the model, testing it, d
 
 ## Lab Instructions
 
-### Overview
-
 In this course, you'll implement and experiment a basic MLOps process, supported by an automated infrastructure for training/testing/deploying/integrating ML Models. It is comprised into four parts:
 
 1. You'll start with a **WarmUp**, for reviewing the basic features of Amazon Sagemaker;
@@ -96,10 +94,13 @@ Parts 2 and 3 are supported by automated pipelines that reads the assets produce
 
 <a name="The-Pipeline-Architecture"/>
 
+### Lab 0 - Create an End-to-end pipeline with CloudFormation
 
-### Step 0. Upload files to S3
+As we wish to build a repeatable, testable and auditable end-to-end pipelien, we will use CloudFormation, *an infrastructure automation platform for AWS*, to create all the components required for the exercises. 
 
-As we wish to build a repeatable, testable and auditable end-to-end pipelien, we will use CloudFormation, *an infrastructure automation platform for AWS*, to create all the components required for the exercises. CloudFormantion requires some templates (e.g. `.yaml` files) to launch a repeatable ML pipeline. Hence, we will need to upload the templates to a S3 bucket as showing below:
+#### Step 0. Upload files to S3
+
+CloudFormantion requires some templates (e.g. `.yaml` files) to launch a repeatable ML pipeline. Hence, we will need to upload the templates to a S3 bucket as showing below:
 
 First, login to the AWS account and navigate to [S3 Buckets main page](https://s3.console.aws.amazon.com/s3/home?region=us-west-2#), and create an S3 bucket (Create Bucket) as below:
 
@@ -114,7 +115,7 @@ Then, we will need to upload the CloudFormantion `.yaml` files into this bucket.
 
 
 
-### Step 1. Create the CloudFormation Stack
+#### Step 1. Create the CloudFormation Stack
 
 Now we have the "ingredients" for CloudFormation to use, we can then create our stack to orchestrate the ML Pipeline. 
 
@@ -134,7 +135,7 @@ Then, copy the *Object URL* as shown above, and paste the *Object URL* to the fi
 
 ![](imgs/create_stack_with_s3_url.png)
 
-Once the template is attached, we need to *Specify stack details*. In this lab, you can take any stack name and fill in the Stack name (e.g., `TESTXXX` as shown below). In addition, we need to specify the NotebookInstance*SecGroupID* as “*default*”, also choose any *SubNetid* except `172.31.*48*.0/20`. Last, replace the *UserAlias* with your own alias (e.g. `rlhu` as shown below).
+Once the template is attached, we need to *Specify stack details*. In this lab, you can take any stack name and fill in the Stack name (e.g., `TESTXXX` as shown below). In addition, we need to specify the *NotebookInstanceSecGroupID* as “*default*”, also choose any *SubNetid* except `172.31.*48*.0/20`. Last, replace the *UserAlias* with your own alias (e.g. `rlhu` as shown below).
 
 ![](imgs/specify_stack_details.png)
 
@@ -150,15 +151,66 @@ The last step is to `Review XXXX` (Your stack name). You only need to scroll dow
 You can leave everything else unchanged and click `Create stack`. It will take about *10 minutes* to create the full stacks. After completion, it will show a “CREATE_COMPLETE” under [CloudFormation](https://console.aws.amazon.com/cloudformation/home?region=us-west-2#/) - `Stacks`.
 
 
+## Lab 1 - *Warmup*: SageMaker Build/Train/Test 
 
 
+After the stacks were created, navigate to Sagemaker notebook instances (https://us-west-2.console.aws.amazon.com/sagemaker/home?region=us-west-2#/notebook-instances). Here the Sagemaker notebook “MLOps_Lab” should be “*InService*”. Click Open Jupyter and navigate to the folder `MLU-MLOps-lab/lab`, you will see the following notebook:
 
 
-1. Then open the Jupyter Notebook instance in Sagemaker and start doing the exercises:
+![](imgs/sagemaker_lab_folder.png)
 
-    1. [Warmup](lab/01_Warmup): This is a basic exercise for exploring the Sagemaker features like: training, deploying and optmizing a model. If you already have experience with Sagemaker, you can skip this exercise.
-    2.[Train your models](lab/02_MLOpsPipeline): In this exercise you'll use the training pipeline. You'll see how to train or retrain a particular model by just copying a zip file with the required assets to a given S3 bucket.
-    3. [Stress Test](lab/03_Testing): Here you can execute stress tests to see how well your model is performing.
+
+Now, let’s warm up with the fundamental features of Sagemaker (e.g. training, deploying and optimizing a model) by playing with each cell of Jupyter Notebook lab1_TrainDeployTest.ipynb. (If you are already experienced with Sagemaker, you can skip this exercise.)
+
+
+## Lab 2 - Automate an End-to-end ML Pipeline
+
+First, navigate to the folder `MLU-MLOps-lab/lab` and open `lab2a_Automate_End-to-End_Pipeline.ipynb`. The only parameter you need to modify is the parameter `your_alias` (as shown below). Make sure you replace it with your personalized alias (i.e., the one you used when in Lab 0.). Then click `Restart and Run All` to run all the cells in this notebook.
+
+![](imgs/lab2a.png)
+
+
+You may wonder "*What does this notebook do?*" After the s3 bucket get the new data, the MLOps pipeline will be kicked off automatically. It involved the following functions: `SourceAction` -> `ProcessRequest` -> `Train` -> `DeployDev` -> `DeployApproval` -> `DeployProd`.
+
+
+![](imgs/lab2a_codepipeline_overview.png)
+
+
+The pipeline will auto-stop at `DeployApproval` (if everything goes right), then we need to grant the approval to the pipeline via notebook `lab2b_Productionizing_End-to-end_Pipeline.ipynb`. You need to click the `“Approval”` button and it will finish the rest step of this ML Pipeline by  to deploy to the production environment.
+
+![](imgs/lab2b.png)
+
+
+## Lab 2c - Stress Test
+
+A common practice after deploying an end-to-end pipeline is stress testing. Here you can execute stress tests to see how well your model is performing.
+
+First, navigate to the folder `MLU-MLOps-lab/lab` and open notebook `lab2c_Stress_Test.ipynb`. Simply follow the instrutions on the notebook and run the notebook. After running this stress test script, go to the *AWS Console* -> *Sagemaker*, then click on the *Endpoint* `iris-model-production`. Under the endpoint `iris-model-production` , click on the `View logs` to monitor logs in *CloudWatch*.
+
+![](imgs/lab2c_cloudwatch.png)
+
+In CloudWatch, we can select multiple metrics to view the instance health and build your monitor graph, such as `Invocations`, `ModelLatency` and `OverheadLatency` as showing below:
+
+![](imgs/lab2c_cloudwatch_metrics.png)
+
+Then modify the quantitive units (column names) `Statistic`, `Period` and the `Y Axis` as below:
+
+![](imgs/lab2c_cloudwatch_units.png)
+
+In addition, if the `InvocationsPerInstance` is too high, the pipeline will autoscale up to 10 instances to accommodate the traffic. You can monitor it under `Alarms` as below:
+
+![](imgs/lab2c_alarm.png)
+
+
+----
+## Cleaning
+
+First delete the folowing stacks:
+ - mlops-deploy-iris-model-dev
+ - mlops-deploy-iris-model-prd
+ - mlops-training-iris-model-job
+
+Then delete the stack you created. **WARNING**: All the assets will be deleted, including the S3 Bucket and the ECR Docker images created during the execution of this whole lab.
 
 
 ----
@@ -179,15 +231,6 @@ Please see [sample code](https://github.com/awslabs/amazon-sagemaker-mlops-works
 
 
 
-----
-# Cleaning
-
-First delete the folowing stacks:
- - mlops-deploy-iris-model-dev
- - mlops-deploy-iris-model-prd
- - mlops-training-iris-model-job
-
-Then delete the stack you created. **WARNING**: All the assets will be deleted, including the S3 Bucket and the ECR Docker images created during the execution of this whole lab.
 
 
  
