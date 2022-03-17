@@ -134,26 +134,25 @@ Then, copy the *Object URL* as shown above, and paste the *Object URL* to the fi
 
 ![](imgs/create_stack_with_s3_url.png)
 
-Once the template is attached, we need to *Specify stack details*. In this lab, you can take any stack name and fill in the Stack name (e.g., `TESTXXX` as shown below). In addition, we need to specify the NotebookInstance*SecGroupID* as “*default*”, also choose any *SubNetid* except `172.31.*48*.0/20`. Last, replace the *UserAlias* with your own alias (e.g. `rlhu` as shown above).
+Once the template is attached, we need to *Specify stack details*. In this lab, you can take any stack name and fill in the Stack name (e.g., `TESTXXX` as shown below). In addition, we need to specify the NotebookInstance*SecGroupID* as “*default*”, also choose any *SubNetid* except `172.31.*48*.0/20`. Last, replace the *UserAlias* with your own alias (e.g. `rlhu` as shown below).
 
-![](imgs/create_stack_with_s3_url.png)
+![](imgs/specify_stack_details.png)
 
-Last step is to *Configure stack options*. We will leave everything unchanged (as default) and click *Next*, i.e.,
+Next step is to `Configure stack options`. We will leave everything unchanged (as default) and click *Next*, i.e.,
 
-
-* *Review* XXXX (Your stack name)
-    * Scroll down to the bottom of this page, and check the following two IAM checks as below:
+![](imgs/configure_stack_options.png)
 
 
+The last step is to `Review XXXX` (Your stack name). You only need to scroll down to the bottom of this page, and check the following two IAM checks as below:
+
+![](imgs/review_stack.png)
+
+You can leave everything else unchanged and click `Create stack`. It will take about *10 minutes* to create the full stacks. After completion, it will show a “CREATE_COMPLETE” under [CloudFormation](https://console.aws.amazon.com/cloudformation/home?region=us-west-2#/) - `Stacks`.
 
 
-First, you need to execute a CloudFormation script to create all the components required for the exercises.
 
-1. Select the below to launch CloudFormation stack.
 
-Region| Launch
-------|-----
-US East (N. Virginia) | [![Launch MLOps solution in us-east-1](imgs/cloudformation-launch-stack.png)](https://console.aws.amazon.com/cloudformation/home?region=us-east-1#/stacks/new?stackName=AIWorkshop&templateURL=https://s3.amazonaws.com/aws-ai-ml-aod-latam/mlops-workshop/m.yml)
+
 
 1. Then open the Jupyter Notebook instance in Sagemaker and start doing the exercises:
 
