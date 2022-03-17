@@ -103,7 +103,7 @@ As we wish to build a repeatable, testable and auditable end-to-end pipelien, we
 
 First, login to the AWS account and navigate to [S3 Buckets main page](https://s3.console.aws.amazon.com/s3/home?region=us-west-2#), and create an S3 bucket (Create Bucket) as below:
 
-  * the bucket name is “mlops-launch-template-YOURALIAS” (Please replace YOURALIAS with your own alias, e.g., mlops-launch-template-rlhu as shown in the below image);
+  * the bucket name is “mlops-launch-template-YOURALIAS” (Please replace YOURALIAS with your own alias, e.g., `mlops-launch-template-rlhu` as shown in the below image);
   * the S3 bucket region will be *us-west-2*;
   * you don’t need to change other settings but go ahead to “Create bucket”.
 
@@ -123,18 +123,26 @@ First, Go to [CloudFormation](https://us-west-2.console.aws.amazon.com/cloudform
 ![](imgs/create_stack.png)
 
 
-Then, choose `Templates is ready` and `Amazon S3 URL`. To find the template's S3 URL, find the file named `MLU_MLOps_Labs_CF.yml`in the S3 bucket you have created above, and copy the *Object URL* as shown below:
+Next, choose `Templates is ready` and `Amazon S3 URL`. To find the template's S3 URL, go to the S3 bucket you have created above and find the file named `MLU_MLOps_Labs_CF.yml`. 
 
 # TODO: NEED PUT THE .yml file IN THE .zip
 
 ![](imgs/template_s3_url.png)
 
 
+Then, copy the *Object URL* as shown above, and paste the *Object URL* to the field *Amazon S3 URL* below and click *Next*.
+
+![](imgs/create_stack_with_s3_url.png)
+
+Once the template is attached, we need to *Specify stack details*. In this lab, you can take any stack name and fill in the Stack name (e.g., `TESTXXX` as shown below). In addition, we need to specify the NotebookInstance*SecGroupID* as “*default*”, also choose any *SubNetid* except `172.31.*48*.0/20`. Last, replace the *UserAlias* with your own alias (e.g. `rlhu` as shown above).
+
+![](imgs/create_stack_with_s3_url.png)
+
+Last step is to *Configure stack options*. We will leave everything unchanged (as default) and click *Next*, i.e.,
 
 
-
-
-
+* *Review* XXXX (Your stack name)
+    * Scroll down to the bottom of this page, and check the following two IAM checks as below:
 
 
 
