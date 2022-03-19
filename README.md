@@ -13,6 +13,10 @@ For lecture usage on the ML Operation (MLOps) course in Amazon Machine Learning 
 - [Lab Overview](#Lab-Overview)
   - [The Pipeline Architecture](#The-Pipeline-Architecture)
 - [Lab Instructions](#Lab-Instructions)
+  - [Lab 0 - Create an End-to-end pipeline with CloudFormation](#Lab-0)
+  - [Lab 1 - Build/Train/Test via SageMaker](#Lab-1)
+  - [Lab 2 - Automate an End-to-end ML Pipeline](#Lab-2)
+- [Cleaning Up](#Cleaning-Up)
 - [Supplementary](#Supplementary)
 
 
@@ -38,6 +42,11 @@ We structure the course as following:
 
 ## Pre-requisites
 
+### AWS Account
+
+ You'll need an AWS Account with access to the services above. There are resources required by this workshop that are eligible for the [AWS Free Tier](https://aws.amazon.com/free/) if your account is less than 12 months old. 
+
+
 ### Knowledge Check
 
 You should have some basic experience with:
@@ -54,16 +63,12 @@ You should have some basic experience with:
 
 Some experience working with the AWS console is helpful as well.
 
-### AWS Account
-
- You'll need an AWS Account with access to the services above. There are resources required by this workshop that are eligible for the [AWS Free Tier](https://aws.amazon.com/free/) if your account is less than 12 months old. 
 
 <a name="Lab-Overview"/>
 
+## Lab Overview: The ML Pipeline Architecture
 
-## The ML Pipeline Architecture of this Lab
-
-You'll make use of the following structure for training the model, testing it, deploying it in two different environments: DEV - QA/Development (simple endpoint) and PRD - Production (HA/Elastic endpoint).
+In this lab, we will create an end-to-end ML Pipeline for training a model, testing it, deploying it in two different environments: DEV - QA/Development (simple endpoint) and PRD - Production (HA/Elastic endpoint). The following image gives us a high level view of the architecture.
 
 ![Train Deploy and Test a ML Model](imgs/MLOps_Train_Deploy_TestModel.jpg)
 
@@ -92,7 +97,7 @@ In this course, you'll implement and experiment a basic MLOps process, supported
 Parts 2 and 3 are supported by automated pipelines that reads the assets produced by the ML devoloper and execute/control the whole process.
 
 
-<a name="The-Pipeline-Architecture"/>
+<a name="Lab-0"/>
 
 ### Lab 0 - Create an End-to-end pipeline with CloudFormation
 
@@ -151,7 +156,9 @@ The last step is to `Review XXXX` (Your stack name). You only need to scroll dow
 You can leave everything else unchanged and click `Create stack`. It will take about *10 minutes* to create the full stacks. After completion, it will show a “CREATE_COMPLETE” under [CloudFormation](https://console.aws.amazon.com/cloudformation/home?region=us-west-2#/) - `Stacks`.
 
 
-## Lab 1 - *Warmup*: SageMaker Build/Train/Test 
+<a name="Lab-1"/>
+
+## Lab 1 - Lab 1 - Build/Train/Test via SageMaker
 
 
 After the stacks were created, navigate to Sagemaker notebook instances (https://us-west-2.console.aws.amazon.com/sagemaker/home?region=us-west-2#/notebook-instances). Here the Sagemaker notebook “MLOps_Lab” should be “*InService*”. Click Open Jupyter and navigate to the folder `MLU-MLOps-lab/lab`, you will see the following notebook:
@@ -162,6 +169,7 @@ After the stacks were created, navigate to Sagemaker notebook instances (https:/
 
 Now, let’s warm up with the fundamental features of Sagemaker (e.g. training, deploying and optimizing a model) by playing with each cell of Jupyter Notebook lab1_TrainDeployTest.ipynb. (If you are already experienced with Sagemaker, you can skip this exercise.)
 
+<a name="Lab-2"/>
 
 ## Lab 2 - Automate an End-to-end ML Pipeline
 
@@ -181,7 +189,7 @@ The pipeline will auto-stop at `DeployApproval` (if everything goes right), then
 ![](imgs/lab2b.png)
 
 
-## Lab 2c - Stress Test
+### Lab 2c - Stress Test
 
 A common practice after deploying an end-to-end pipeline is stress testing. Here you can execute stress tests to see how well your model is performing.
 
@@ -203,7 +211,10 @@ In addition, if the `InvocationsPerInstance` is too high, the pipeline will auto
 
 
 ----
-## Cleaning
+
+<a name="Cleaning-Up"/>
+
+## Cleaning Up
 
 First delete the folowing stacks:
  - mlops-deploy-iris-model-dev
