@@ -23,7 +23,6 @@ For lecture usage on the ML Operation (MLOps) course in [Amazon Machine Learning
 
 
 
-
 <a name="Pre-requisites"/>
 
 ## Pre-requisites
@@ -57,6 +56,7 @@ Some experience working with the AWS console is helpful as well.
 In this lab, we will create an end-to-end ML Pipeline for training a model, testing it, deploying it in two different environments: DEV - QA/Development (simple endpoint) and PRD - Production (HA/Elastic endpoint). The following image gives us a high level view of the architecture.
 
 ![Train Deploy and Test a ML Model](imgs/MLOps_Train_Deploy_TestModel.jpg)
+<img src="imgs/MLOps_Train_Deploy_TestModel.jpg" alt="drawing" width="200"/>
 
 
 1. An ETL process or the ML Developer, prepares a new dataset for training the model and copies it into an S3 Bucket;
