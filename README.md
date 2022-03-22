@@ -56,7 +56,7 @@ Some experience working with the AWS console is helpful as well.
 In this lab, we will create an end-to-end ML Pipeline for training a model, testing it, deploying it in two different environments: DEV - QA/Development (simple endpoint) and PRD - Production (HA/Elastic endpoint). The following image gives us a high level view of the architecture.
 
 <p align="center">
-  <img src="imgs/MLOps_Train_Deploy_TestModel.jpg" alt="drawing" width="500"/>
+  <img src="imgs/MLOps_Train_Deploy_TestModel.jpg" alt="drawing" width="600"/>
 </p>
 
 1. An ETL process or the ML Developer, prepares a new dataset for training the model and copies it into an S3 Bucket;
@@ -102,12 +102,9 @@ First, login to the AWS account and navigate to [S3 Buckets main page](https://s
 
 Then, we will need to upload the CloudFormantion `.yaml` files into this bucket. We have a set of sample scripts for you - [`MLOps Labs.zip`](https://github.com/goldmermaid/MLU-MLOps-Lab/raw/main/MLOps%20Labs.zip). This `.zip` file includes all the CloudFormation `.yml` files and sub `.zip` files to automate the overall pipelines. Let's *download* and *unzip* the `MLOps Labs.zip`; Next, we *upload* the above `.yml` and `.zip` files to the S3 bucket you just created. After uploading the files, the S3 bucket looks like:
 
-
 <p align="center">
   <img src="imgs/s3_upload.png" alt="drawing" width="500"/>
 </p>
-
-
 
 
 #### Step 1. Create the CloudFormation Stack
@@ -116,9 +113,8 @@ Now we have the "ingredients" for CloudFormation to use, we can then create our 
 
 First, Go to [CloudFormation](https://us-west-2.console.aws.amazon.com/cloudformation/home?region=us-west-2#) at Region *us-west-2*. Once you the mainpage, click `Create stack` and the options as below:
 
-![](imgs/create_stack.png)
 <p align="center">
-  
+  <img src="imgs/create_stack.png" alt="drawing" width="500"/>
 </p>
 
 Next, choose `Templates is ready` and `Amazon S3 URL`. To find the template's S3 URL, go to the S3 bucket you have created above and find the file named `MLU_MLOps_Labs_CF.yml`. 
@@ -200,25 +196,25 @@ A common practice after deploying an end-to-end pipeline is stress testing. Here
 First, navigate to the folder `MLU-MLOps-lab/lab` and open notebook `lab2c_Stress_Test.ipynb`. Simply follow the instrutions on the notebook and run the notebook. After running this stress test script, go to the *AWS Console* -> *Sagemaker*, then click on the *Endpoint* `iris-model-production`. Under the endpoint `iris-model-production` , click on the `View logs` to monitor logs in *CloudWatch*.
 
 <p align="center">
-  <img src="imgs/lab2c_cloudwatch.png" alt="drawing" width="500"/>
+  <img src="imgs/lab2c_cloudwatch.png" alt="drawing" width="600"/>
 </p>
 
 In CloudWatch, we can select multiple metrics to view the instance health and build your monitor graph, such as `Invocations`, `ModelLatency` and `OverheadLatency` as showing below:
 
 <p align="center">
-  <img src="imgs/lab2c_cloudwatch_metrics.png" alt="drawing" width="500"/>
+  <img src="imgs/lab2c_cloudwatch_metrics.png" alt="drawing" width="600"/>
 </p>
 
 Then modify the quantitive units (column names) `Statistic`, `Period` and the `Y Axis` as below:
 
 <p align="center">
-  <img src="imgs/lab2c_cloudwatch_units.png" alt="drawing" width="500"/>
+  <img src="imgs/lab2c_cloudwatch_units.png" alt="drawing" width="600"/>
 </p>
 
 In addition, if the `InvocationsPerInstance` is too high, the pipeline will autoscale up to 10 instances to accommodate the traffic. You can monitor it under `Alarms` as below:
 
 <p align="center">
-  <img src="imgs/lab2c_alarm.png" alt="drawing" width="500"/>
+  <img src="imgs/lab2c_alarm.png" alt="drawing" width="600"/>
 </p>
 
 
