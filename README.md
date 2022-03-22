@@ -5,10 +5,9 @@
 
 
 # MLU-MLOps Lab
-For lecture usage on the ML Operation (MLOps) course in Amazon Machine Learning University (MLU).
+For lecture usage on the ML Operation (MLOps) course in [Amazon Machine Learning University (MLU)](https://aws.amazon.com/machine-learning/mlu/).
 
 ##### Table of Contents  
-- [MLU MLOps Introduction](#Introduction)  
 - [Pre-requisites](#Pre-requisites)  
 - [Lab Overview](#Lab-Overview)
   - [The Pipeline Architecture](#The-Pipeline-Architecture)
@@ -18,24 +17,11 @@ For lecture usage on the ML Operation (MLOps) course in Amazon Machine Learning 
   - [Lab 2 - Automate an End-to-end ML Pipeline](#Lab-2)
 - [Cleaning Up](#Cleaning-Up)
 - [Supplementary](#Supplementary)
+  - [MLU MLOps Introduction](#Introduction)
+  - [Customized Docker Container](#customized)
 
 
 
-
-<a name="Introduction"/>
-
-## MLU MLOps Introduction
-
-In this course, we will first overview how to architect end-to-end ML systems: from initial ML project scoping to data ingestion, from model training and deployment, to model serving, monitoring and maintenance. Through the lectures, we will explore the ML Systems of several key products and services within Amazon to get you inspired with a varied of ML system decisions. Beside, by reviewing some ML pitfalls, we provide some practical solutions for you to debug the ML systems.
-
-We structure the course as following:
-
-* Lecture 1: *what components* needed for an ML system (via an MiniAmazonGo example)
-* Lecture 2: what *questions (choices) to ask* for each component
-* Lecture 3-4: what *options* (answers to above questions) do you have for each component
-* Lecture 5: what *consequence* to be aware of (monitoring, social impact, etc.)
-
-<img align="central" src="imgs/mlops_syllabus.png">
 
 
 <a name="Pre-requisites"/>
@@ -230,6 +216,27 @@ Then delete the stack you created. **WARNING**: All the assets will be deleted, 
 
 ## Supplementary
 
+
+<a name="Introduction"/>
+
+### MLU MLOps Course Introduction
+
+In this course, you will learn how to architect end-to-end ML systems: from initial ML project scoping to data ingestion, from model training and deployment, to model serving, monitoring and maintenance. Through the lectures, we will explore the ML Systems of several key products and services within Amazon to get you inspired with a varied of ML system decisions. Beside, by reviewing some ML pitfalls, we provide some practical solutions for you to debug the ML systems.
+
+We structure the course as following:
+
+* Lecture 1: *what components* needed for an ML system (via an MiniAmazonGo example)
+* Lecture 2: what *questions (choices) to ask* for each component
+* Lecture 3-4: what *options* (answers to above questions) do you have for each component
+* Lecture 5: what *consequence* to be aware of (monitoring, social impact, etc.)
+
+<img align="central" src="imgs/mlops_syllabus.png">
+
+
+<a name="customized"/>
+
+### Customized Docker
+
 If you would like to use a customized environment (i.e. rather than Sagemaker built-in ones), you may create a customized Docker image on your own. In this case, you will need to create a `Dockerfile` with 
 
 - `pip install ...` selected packages;
@@ -239,10 +246,6 @@ Then, build the customized doker by running `!docker build -f Dockerfile -t ...`
 
 
 Please see [sample code](https://github.com/awslabs/amazon-sagemaker-mlops-workshop/blob/master/lab/01_CreateAlgorithmContainer/01_Creating%20a%20Classifier%20Container.ipynb) about how to create a customized Docker image.
-
-
-
-
 
  
 ----
