@@ -55,8 +55,7 @@ Some experience working with the AWS console is helpful as well.
 
 In this lab, we will create an end-to-end ML Pipeline for training a model, testing it, deploying it in two different environments: DEV - QA/Development (simple endpoint) and PRD - Production (HA/Elastic endpoint). The following image gives us a high level view of the architecture.
 
-![Train Deploy and Test a ML Model](imgs/MLOps_Train_Deploy_TestModel.jpg)
-<img src="imgs/MLOps_Train_Deploy_TestModel.jpg" alt="drawing" width="200"/>
+<img src="imgs/MLOps_Train_Deploy_TestModel.jpg" alt="drawing" width="500"/>
 
 
 1. An ETL process or the ML Developer, prepares a new dataset for training the model and copies it into an S3 Bucket;
@@ -102,7 +101,8 @@ First, login to the AWS account and navigate to [S3 Buckets main page](https://s
 
 Then, we will need to upload the CloudFormantion `.yaml` files into this bucket. We have a set of sample scripts for you - [`MLOps Labs.zip`](https://github.com/goldmermaid/MLU-MLOps-Lab/raw/main/MLOps%20Labs.zip). This `.zip` file includes all the CloudFormation `.yml` files and sub `.zip` files to automate the overall pipelines. Let's *download* and *unzip* the `MLOps Labs.zip`; Next, we *upload* the above `.yml` and `.zip` files to the S3 bucket you just created. After uploading the files, the S3 bucket looks like:
 
-![](imgs/s3_upload.png)
+
+<img src="imgs/s3_upload.png" alt="drawing" width="500"/>
 
 
 
