@@ -9,9 +9,12 @@
 In this lab, we will create an end-to-end ML Pipeline for training a model, testing it, deploying it in two different environments: DEV environment for QA/Development (simple endpoint) and PRD environment for Production (HA/Elastic endpoint). 
 The lab content is also lectured by the ML Operation (MLOps) course in [Amazon Machine Learning University (MLU)](https://aws.amazon.com/machine-learning/mlu/).
 
-##### Table of Contents  
+
+---
+
+#### Table of Contents  
 - [Pre-requisites](#Pre-requisites)  
-- [Lab Overview: The Pipeline Architecture](#Lab-Overview)
+- [The Pipeline Architecture](#Architecture)
 - [Lab Instructions](#Lab-Instructions)
   - [Lab 0 - Create an End-to-end pipeline with CloudFormation](#Lab-0)
   - [Lab 1 - Build/Train/Test via SageMaker](#Lab-1)
@@ -52,9 +55,9 @@ You should have some basic experience with:
 Some experience working with the AWS console is helpful as well.
 
 
-<a name="Lab-Overview"/>
+<a name="Architecture"/>
 
-## Lab Overview: The ML Pipeline Architecture
+## The ML Pipeline Architecture
 
 The following image gives us a high level view of the architecture.
 
