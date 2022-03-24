@@ -9,8 +9,7 @@ For lecture usage on the ML Operation (MLOps) course in [Amazon Machine Learning
 
 ##### Table of Contents  
 - [Pre-requisites](#Pre-requisites)  
-- [Lab Overview](#Lab-Overview)
-  - [The Pipeline Architecture](#The-Pipeline-Architecture)
+- [Lab Overview: The Pipeline Architecture](#Lab-Overview)
 - [Lab Instructions](#Lab-Instructions)
   - [Lab 0 - Create an End-to-end pipeline with CloudFormation](#Lab-0)
   - [Lab 1 - Build/Train/Test via SageMaker](#Lab-1)
@@ -157,7 +156,7 @@ You can leave everything else unchanged and click `Create stack`. It will take a
 ## Lab 1 - Lab 1 - Build/Train/Test via SageMaker
 
 
-After the stacks were created, navigate to Sagemaker notebook instances (https://us-west-2.console.aws.amazon.com/sagemaker/home?region=us-west-2#/notebook-instances). Here the Sagemaker notebook “MLOps_Lab” should be “*InService*”. Click Open Jupyter and navigate to the folder `MLU-MLOps-lab/lab`, you will see the following notebook:
+After the stacks were created, navigate to [Sagemaker notebook instances](https://us-west-2.console.aws.amazon.com/sagemaker/home?region=us-west-2#/notebook-instances). Here the Sagemaker notebook “MLOps_Lab” should be “*InService*”. Click Open Jupyter and navigate to the folder `MLU-MLOps-lab/lab`, you will see the following notebook:
 
 
 <p align="center">
@@ -247,7 +246,7 @@ In this course, you will learn how to architect end-to-end ML systems: from init
 
 We structure the course as following:
 
-* Lecture 1: *what components* needed for an ML system (via an MiniAmazonGo example)
+* Lecture 1: what *components* needed for an ML system (via an MiniAmazonGo example)
 * Lecture 2: what *questions (choices) to ask* for each component
 * Lecture 3-4: what *options* (answers to above questions) do you have for each component
 * Lecture 5: what *consequence* to be aware of (monitoring, social impact, etc.)
