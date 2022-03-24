@@ -5,7 +5,9 @@
 
 
 # MLU-MLOps Lab
-For lecture usage on the ML Operation (MLOps) course in [Amazon Machine Learning University (MLU)](https://aws.amazon.com/machine-learning/mlu/).
+
+In this lab, we will create an end-to-end ML Pipeline for training a model, testing it, deploying it in two different environments: DEV environment for QA/Development (simple endpoint) and PRD environment for Production (HA/Elastic endpoint). 
+The lab content is also lectured by the ML Operation (MLOps) course in [Amazon Machine Learning University (MLU)](https://aws.amazon.com/machine-learning/mlu/).
 
 ##### Table of Contents  
 - [Pre-requisites](#Pre-requisites)  
@@ -30,6 +32,8 @@ For lecture usage on the ML Operation (MLOps) course in [Amazon Machine Learning
 
  You'll need an AWS Account with access to the services above. There are resources required by this workshop that are eligible for the [AWS Free Tier](https://aws.amazon.com/free/) if your account is less than 12 months old. 
 
+**WARNING**: if you account is more than 12 months old, you may get a bill. (I launched this pipeline recently and stoped/deleted the system within an hour after successful launching, while i got a bill less than $1.)
+
 
 ### Knowledge Check
 
@@ -52,7 +56,7 @@ Some experience working with the AWS console is helpful as well.
 
 ## Lab Overview: The ML Pipeline Architecture
 
-In this lab, we will create an end-to-end ML Pipeline for training a model, testing it, deploying it in two different environments: DEV - QA/Development (simple endpoint) and PRD - Production (HA/Elastic endpoint). The following image gives us a high level view of the architecture.
+The following image gives us a high level view of the architecture.
 
 <p align="center">
   <img src="imgs/MLOps_Train_Deploy_TestModel.jpg" alt="drawing" width="600"/>
