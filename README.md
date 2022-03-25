@@ -106,6 +106,7 @@ CloudFormation requires some templates (e.g. `.yaml` files) to launch a repeatab
 
 First, login to the AWS account and navigate to [S3 Buckets main page](https://s3.console.aws.amazon.com/s3/home?region=us-west-2#), and create an S3 bucket (Create Bucket) as below:
 
+<a name="YOURALIAS"/>
   * the bucket name is “mlops-launch-template-YOURALIAS” (Please replace YOURALIAS with your own alias, e.g., `mlops-launch-template-rlhu` as shown in the below image);
   * the S3 bucket region will be *us-west-2*;
   * you don’t need to change other settings but go ahead to “Create bucket”.
@@ -122,15 +123,13 @@ Then, we will need to upload the CloudFormation `.yaml` files into this bucket. 
 
 Now we have the "ingredients" for CloudFormation to use, we can then create our stack to orchestrate the ML Pipeline. 
 
-First, Go to [CloudFormation](https://us-west-2.console.aws.amazon.com/cloudformation/home?region=us-west-2#) at Region *us-west-2*. Once you the mainpage, click `Create stack` and the options as below:
+First, Go to [CloudFormation](https://us-west-2.console.aws.amazon.com/cloudformation/home?region=us-west-2#) at Region *us-west-2*. Once you are on the main page, click `Create stack` and the options as below:
 
 <p align="center">
   <img src="imgs/create_stack.png" alt="drawing" width="500"/>
 </p>
 
 Next, choose `Templates is ready` and `Amazon S3 URL`. To find the template's S3 URL, go to the S3 bucket you have created above and find the file named `MLU_MLOps_Labs_CF.yml`. 
-
-# TODO: NEED PUT THE .yml file IN THE .zip
 
 <p align="center">
   <img src="imgs/template_s3_url.png" alt="drawing" width="500"/>
@@ -142,7 +141,7 @@ Then, copy the *Object URL* as shown above, and paste the *Object URL* to the fi
   <img src="imgs/create_stack_with_s3_url.png" alt="drawing" width="500"/>
 </p>
 
-Once the template is attached, we need to *Specify stack details*. In this lab, you can take any stack name and fill in the Stack name (e.g., `TESTXXX` as shown below). In addition, we need to specify the *NotebookInstanceSecGroupID* as “*default*”, also choose any *SubNetid* except `172.31.*48*.0/20`. Last, replace the *UserAlias* with your own alias (e.g. `rlhu` as shown below).
+Once the template is attached, we need to *Specify stack details*. In this lab, you can take any stack name and fill in the Stack name (e.g., `TESTXXX` as shown below). In addition, we need to specify the *NotebookInstanceSecGroupID* as “*default*”, and also choose any *SubNetid* except `172.31.*48*.0/20`. Last, replace the *UserAlias* with your own alias. The alias must be identical with `YOURALIAS`, i.e. the one you used to [create S3 bucket above](#YOURALIAS) (e.g. `rlhu` as shown below).
 
 <p align="center">
   <img src="imgs/specify_stack_details.png" alt="drawing" width="500"/>
@@ -194,7 +193,7 @@ You may wonder "*What does this notebook do?*" After the s3 bucket get the new d
   <img src="imgs/lab2a_codepipeline_overview.png" alt="drawing" width="500"/>
 </p>
 
-The pipeline will auto-stop at `DeployApproval` (if everything goes right), then we need to grant the approval to the pipeline via notebook `lab2b_Productionizing_End-to-end_Pipeline.ipynb`. You need to click the `“Approval”` button and it will finish the rest step of this ML Pipeline by  to deploy to the production environment.
+The pipeline will auto-stop at `DeployApproval` (if everything goes right), then we need to grant the approval to the pipeline via notebook `lab2b_Productionizing_End-to-end_Pipeline.ipynb`. You need to click the `“Approval”` button and it will finish the rest of this ML Pipeline by deploying to the production environment.
 
 <p align="center">
   <img src="imgs/lab2b.png" alt="drawing" width="500"/>
@@ -204,19 +203,19 @@ The pipeline will auto-stop at `DeployApproval` (if everything goes right), then
 
 A common practice after deploying an end-to-end pipeline is stress testing. Here you can execute stress tests to see how well your model is performing.
 
-First, navigate to the folder `MLU-MLOps-lab/lab` and open notebook `lab2c_Stress_Test.ipynb`. Simply follow the instrutions on the notebook and run the notebook. After running this stress test script, go to the *AWS Console* -> *Sagemaker*, then click on the *Endpoint* `iris-model-production`. Under the endpoint `iris-model-production` , click on the `View logs` to monitor logs in *CloudWatch*.
+First, navigate to the folder `MLU-MLOps-lab/lab` and open notebook `lab2c_Stress_Test.ipynb`. Simply follow the instructions on the notebook and run the notebook. After running this stress test script, go to the *AWS Console* -> *Sagemaker*, then click on the *Endpoint* `iris-model-production`. Under the endpoint `iris-model-production` , click on the `View logs` to monitor logs in *CloudWatch*.
 
 <p align="center">
   <img src="imgs/lab2c_cloudwatch.png" alt="drawing" width="600"/>
 </p>
 
-In CloudWatch, we can select multiple metrics to view the instance health and build your monitor graph, such as `Invocations`, `ModelLatency` and `OverheadLatency` as showing below:
+In CloudWatch, we can select multiple metrics to view the instance health and build your monitor graph, such as `Invocations`, `ModelLatency` and `OverheadLatency` as shown below:
 
 <p align="center">
   <img src="imgs/lab2c_cloudwatch_metrics.png" alt="drawing" width="600"/>
 </p>
 
-Then modify the quantitive units (column names) `Statistic`, `Period` and the `Y Axis` as below:
+Then modify the quantitative units (column names) `Statistic`, `Period` and the `Y Axis` as below:
 
 <p align="center">
   <img src="imgs/lab2c_cloudwatch_units.png" alt="drawing" width="600"/>
@@ -235,7 +234,7 @@ In addition, if the `InvocationsPerInstance` is too high, the pipeline will auto
 
 ## Cleaning Up
 
-First delete the folowing stacks:
+First delete the following stacks:
  - mlops-deploy-iris-model-dev
  - mlops-deploy-iris-model-prd
  - mlops-training-iris-model-job
