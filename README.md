@@ -8,9 +8,9 @@
 
 
 In this lab, we will create and experiment an end-to-end ML Pipeline. 
-This ML pipeline supports by an automated infrastructure for training, testing, deploying and integrating ML Models. 
-Furthermore, the model can be deployed in two different environments: DEV environment for QA/Development (simple endpoint) and PRD environment for Production (HA/Elastic endpoint). 
-In addition, we will apply some stress tests to check the ML system scaliability and stability. 
+This ML pipeline is supported by an automated infrastructure for training, testing, deploying and integrating ML Models. 
+Furthermore, the model can be deployed in two different environments: DEV environment for QA/Development endpoint and PRD environment for Production endpoint. 
+In addition, we will apply some stress tests to check the ML system scalability and stability. 
 The lab content is also lectured by the ML Operation (MLOps) course in [Amazon Machine Learning University (MLU)](https://aws.amazon.com/machine-learning/mlu/).
 
 
@@ -38,9 +38,9 @@ The lab content is also lectured by the ML Operation (MLOps) course in [Amazon M
 
 ### AWS Account
 
- You'll need an AWS Account with access to the services above. There are resources required by this workshop that are eligible for the [AWS Free Tier](https://aws.amazon.com/free/) if your account is less than 12 months old. 
+ You'll need an AWS Account with access to the services above. There are resources required by this workshop that are eligible for the [AWS Free Tier](https://aws.amazon.com/free/) if your account is less than 12 months old.
 
-**WARNING**: if you account is more than 12 months old, you may get a bill. (I launched this pipeline recently and stoped/deleted the system within an hour after successful launching, while i got a bill less than $1.)
+**WARNING**: if your account is more than 12 months old, you may get a bill. (I launched this pipeline recently and stopped/deleted the system within an hour after successfully launching, while I got a bill less than $1.)
 
 
 ### Knowledge Check
@@ -72,9 +72,9 @@ The following image gives us a high level view of the architecture.
 </p>
 
 1. An ETL process or the ML Developer, prepares a new dataset for training the model and copies it into an S3 Bucket;
-2. CodePipeline listens to this S3 Bucket, calls a Lambda function for start training a job in Sagemaker;
+2. CodePipeline listens to this S3 Bucket, calls a Lambda function for starting training for a job in Sagemaker;
 3. The lambda function sends a training job request to Sagemaker;
-4. When the training is finished, CodePipeline gets its status goes to the next stage if there is no error;
+4. When the training is finished, CodePipeline gets its status and goes to the next stage if there is no error;
 5. CodePipeline calls CloudFormation to deploy a model in a Development/QA environment into Sagemaker;
 6. After finishing the deployment in DEV/QA, CodePipeline awaits for a manual approval
 7. An approver approves or rejects the deployment. If rejected the pipeline stops here; If approved it goes to the next stage;
@@ -89,7 +89,7 @@ The following image gives us a high level view of the architecture.
 The lab is composed of 3 parts:
 
 1. In Lab 0, we will create an automated infrastructure via CloudFormation for training, testing, deploying and integrating ML Models. 
-1. In Lab 1, we will train the model (using the buil-in XGBoost or the a custom container if you ran the step 2), deploy them into a **DEV** environment, approve and deploy them into a **PRD** environment with high availability and elasticity;
+1. In Lab 1, we will train the model (using the built-in XGBoost or the a custom container if you ran the step 2), deploy them into a **DEV** environment, approve and deploy them into a **PRD** environment with high availability and elasticity;
 1. In Lab 3, we will run some stress tests on the production endpoint to test the elasticity and simulate a situation where the number of requests on the ML model can vary.
 
 
@@ -98,11 +98,11 @@ The lab is composed of 3 parts:
 
 ### Lab 0 - Create an End-to-end pipeline with CloudFormation
 
-As we wish to build a repeatable, testable and auditable end-to-end pipelien, we will use CloudFormation, *an infrastructure automation platform for AWS*, to create all the components required for the exercises. 
+As we wish to build a repeatable, testable and auditable end-to-end pipeline, we will use CloudFormation, *an infrastructure automation platform for AWS*, to create all the components required for the exercises. 
 
 #### Step 0. Upload files to S3
 
-CloudFormantion requires some templates (e.g. `.yaml` files) to launch a repeatable ML pipeline. Hence, we will need to upload the templates to a S3 bucket as showing below:
+CloudFormation requires some templates (e.g. `.yaml` files) to launch a repeatable ML pipeline. Hence, we will need to upload the templates to a S3 bucket as shown below:
 
 First, login to the AWS account and navigate to [S3 Buckets main page](https://s3.console.aws.amazon.com/s3/home?region=us-west-2#), and create an S3 bucket (Create Bucket) as below:
 
@@ -111,7 +111,7 @@ First, login to the AWS account and navigate to [S3 Buckets main page](https://s
   * you don’t need to change other settings but go ahead to “Create bucket”.
 
 
-Then, we will need to upload the CloudFormantion `.yaml` files into this bucket. We have a set of sample scripts for you - [`MLOps Labs.zip`](https://github.com/goldmermaid/MLU-MLOps-Lab/raw/main/MLOps%20Labs.zip). This `.zip` file includes all the CloudFormation `.yml` files and sub `.zip` files to automate the overall pipelines. Let's *download* and *unzip* the `MLOps Labs.zip`; Next, we *upload* the above `.yml` and `.zip` files to the S3 bucket you just created. After uploading the files, the S3 bucket looks like:
+Then, we will need to upload the CloudFormation `.yaml` files into this bucket. We have a set of sample scripts for you - [`MLOps Labs.zip`](https://github.com/goldmermaid/MLU-MLOps-Lab/raw/main/MLOps%20Labs.zip). This `.zip` file includes all the CloudFormation `.yml` files and sub `.zip` files to automate the overall pipelines. Let's *download* and *unzip* the `MLOps Labs.zip`; Next, we *upload* the above `.yml` and `.zip` files to the S3 bucket you just created. After uploading the files, the S3 bucket looks like:
 
 <p align="center">
   <img src="imgs/s3_upload.png" alt="drawing" width="500"/>
