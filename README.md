@@ -6,7 +6,11 @@
 
 # MLU-MLOps Lab
 
-In this lab, we will create an end-to-end ML Pipeline for training a model, testing it, deploying it in two different environments: DEV environment for QA/Development (simple endpoint) and PRD environment for Production (HA/Elastic endpoint). 
+
+In this lab, we will create and experiment an end-to-end ML Pipeline. 
+This ML pipeline supports by an automated infrastructure for training, testing, deploying and integrating ML Models. 
+Furthermore, the model can be deployed in two different environments: DEV environment for QA/Development (simple endpoint) and PRD environment for Production (HA/Elastic endpoint). 
+In addition, we will apply some stress tests to check the ML system scaliability and stability. 
 The lab content is also lectured by the ML Operation (MLOps) course in [Amazon Machine Learning University (MLU)](https://aws.amazon.com/machine-learning/mlu/).
 
 
@@ -26,6 +30,7 @@ The lab content is also lectured by the ML Operation (MLOps) course in [Amazon M
 
 
 
+---
 
 <a name="Pre-requisites"/>
 
@@ -54,6 +59,7 @@ You should have some basic experience with:
 
 Some experience working with the AWS console is helpful as well.
 
+---
 
 <a name="Architecture"/>
 
@@ -80,13 +86,12 @@ The following image gives us a high level view of the architecture.
 
 ## Lab Instructions
 
-In this course, you'll implement and experiment a basic MLOps process, supported by an automated infrastructure for training/testing/deploying/integrating ML Models. It is comprised into four parts:
+The lab is composed of 3 parts:
 
-1. You'll start with a **WarmUp**, for reviewing the basic features of Amazon Sagemaker;
-2. After that, you will train the model (using the buil-in XGBoost or the a custom container if you ran the step 2), deploy them into a **DEV** environment, approve and deploy them into a **PRD** environment with **High Availability** and **Elasticity**;
-3. Finally, you'll run a Stress test on your production endpoint to test the elasticity and simulate a situation where the number of requests on your ML model can vary.
+1. In Lab 0, we will create an automated infrastructure via CloudFormation for training, testing, deploying and integrating ML Models. 
+1. In Lab 1, we will train the model (using the buil-in XGBoost or the a custom container if you ran the step 2), deploy them into a **DEV** environment, approve and deploy them into a **PRD** environment with high availability and elasticity;
+1. In Lab 3, we will run some stress tests on the production endpoint to test the elasticity and simulate a situation where the number of requests on the ML model can vary.
 
-Parts 2 and 3 are supported by automated pipelines that reads the assets produced by the ML devoloper and execute/control the whole process.
 
 
 <a name="Lab-0"/>
