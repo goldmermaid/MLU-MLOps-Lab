@@ -107,6 +107,7 @@ CloudFormation requires some templates (e.g. `.yaml` files) to launch a repeatab
 First, login to the AWS account and navigate to [S3 Buckets main page](https://s3.console.aws.amazon.com/s3/home?region=us-west-2#), and create an S3 bucket (Create Bucket) as below:
 
 <a name="YOURALIAS"/>
+
   * the bucket name is “mlops-launch-template-YOURALIAS” (Please replace YOURALIAS with your own alias, e.g., `mlops-launch-template-rlhu` as shown in the below image);
   * the S3 bucket region will be *us-west-2*;
   * you don’t need to change other settings but go ahead to “Create bucket”.
