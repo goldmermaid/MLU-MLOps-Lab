@@ -40,7 +40,9 @@ The lab content is also lectured by the ML Operation (MLOps) course in [Amazon M
 
  You'll need an AWS Account with access to the services above. There are resources required by this workshop that are eligible for the [AWS Free Tier](https://aws.amazon.com/free/) if your account is less than 12 months old.
 
-**WARNING**: if your account is more than 12 months old, you may get a bill. (I launched this pipeline recently and stopped/deleted the system within an hour after successfully launching, while I got a bill less than $1.)
+**WARNING**: if your account is more than 12 months old, you may get a bill. 
+(I launched this pipeline recently and stopped/deleted the system within an hour after it successfully launching, while I got a bill less than $1. 
+If you didn't delete the CloudFormation stack or any active sagemaker instances/hosting endpoints, you may get bill.)
 
 
 ### Knowledge Check
